@@ -1,3 +1,3 @@
 import main from "./controllers/send-info-weather";
 
-main();
+main().then().catch(error => console.error(error));
