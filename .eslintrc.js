@@ -26,6 +26,7 @@ module.exports = {
         'no-prototype-builtins': 'off',
         '@typescript-eslint/no-inferrable-types': ['error', { ignoreParameters: true }],
         '@typescript-eslint/no-unnecessary-condition': 'warn', // remove once upgraded to v.3 - https://github.com/typescript-eslint/typescript-eslint/issues/1423
-        'no-constant-condition': 'warn'
+        'no-constant-condition': 'warn',
+        '@typescript-eslint/camelcase': 'warn'
     },
 };

@@ -15,7 +15,7 @@ class VkErrors extends Error {
     return {
       errorMessage: this.message,
       statusCode: this.statusCode,
-    }
+    };
   }
 }
 
