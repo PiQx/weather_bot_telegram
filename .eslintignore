@@ -1,0 +1,7 @@
+node_modules
+dist
+build
+coverage
+*.spec.ts
+src/front/*
+src/**/__mocks__/*
