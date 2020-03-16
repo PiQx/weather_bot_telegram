@@ -1,8 +1,9 @@
 import csv from 'csv-parser';
 import { createReadStream } from 'fs';
 import { TableWeather } from './table-weather';
+import config from '../config';
 
-const PATH_TABLE = 'src/Multilingual_Weather_Conditions.csv';
+const PATH_TABLE = config.file;
 
 async function openTableWeather(): Promise<TableWeather[]> {
   const tableWeather: any = [];
