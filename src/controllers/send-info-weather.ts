@@ -37,6 +37,7 @@ function createMessage(params: GetWeatherResult, table: TableWeather[]): CreateM
         element => element.overhead_code === weather_code.toString() && element.lang_name === 'Russian',
     );
 
+    // eslint-disable-next-line @typescript-eslint/camelcase
     const message = `Время: ${localtime}. Город: ${name}.\n${statusWeather[0].trans_text_day} Температура: ${temperature}°C.\tВлажность ${humidity}%\tощущается как ${feelslike}.\nВетер: ${wind_speed}км\\ч, Давление ${pressure} Millibar`;
 
     return {

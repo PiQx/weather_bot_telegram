@@ -25,6 +25,6 @@ module.exports = {
         'import/no-named-as-default-member': 'off',
         'no-prototype-builtins': 'off',
         '@typescript-eslint/no-inferrable-types': ['error', { ignoreParameters: true }],
-        '@typescript-eslint/no-unnecessary-condition': 'error', // remove once upgraded to v.3 - https://github.com/typescript-eslint/typescript-eslint/issues/1423
+        '@typescript-eslint/no-unnecessary-condition': 'warn', // remove once upgraded to v.3 - https://github.com/typescript-eslint/typescript-eslint/issues/1423
     },
 };
