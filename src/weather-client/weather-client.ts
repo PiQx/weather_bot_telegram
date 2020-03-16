@@ -6,39 +6,38 @@ import fetch from 'node-fetch';
 const API_URL = 'http://api.weatherstack.com/current';
 
 interface WeatherClientOptions {
-    apiKey: string;
+  apiKey: string;
 }
 
 interface WeatherClientMethods {
-    getInfoCity(nameCity: City): Promise<GetWeatherResult>;
+  getInfoCity(nameCity: City): Promise<GetWeatherResult>;
 }
 
 interface GetInfoParams {
-    city: City;
-    language?: string;
+  city: City;
+  language?: string;
 }
 
 class WeatherClient implements WeatherClientMethods {
-    constructor(options: WeatherClientOptions) {
-        this.apiKey = options.apiKey;
-    }
+  constructor(options: WeatherClientOptions) {
+    this.apiKey = options.apiKey;
+  }
 
-    private readonly apiKey: string;
+  private readonly apiKey: string;
 
-    public async getInfoCity(nameCity: City): Promise<GetWeatherResult> {
-      return this.perform({city: nameCity})
-    }
+  public async getInfoCity(nameCity: City): Promise<GetWeatherResult> {
+    return this.perform({ city: nameCity });
+  }
 
-    private async perform(params: GetInfoParams = { city: City.moscow, language: 'ru' }): Promise<GetWeatherResult> {
-        const { city, language } = params;
-        // eslint-disable-next-line @typescript-eslint/camelcase
-        const param = { query: city, language, access_key: this.apiKey };
-        const url = `${API_URL}?${stringify(param)}`;
+  private async perform(params: GetInfoParams = { city: City.moscow, language: 'ru' }): Promise<GetWeatherResult> {
+    const { city, language } = params;
+    const param = { query: city, language, access_key: this.apiKey };
+    const url = `${API_URL}?${stringify(param)}`;
 
-        const result = await fetch(url);
+    const result = await fetch(url);
 
-        return result.json();
-    }
+    return result.json();
+  }
 }
 
 export default WeatherClient;
