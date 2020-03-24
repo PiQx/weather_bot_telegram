@@ -1,12 +1,12 @@
-import openTableWeather from './controllers/parser-weather';
-import { users } from './constants';
-import { inspect } from 'util';
+import TelegramClient from './telegram-client/telegram-client';
 import config from './config';
-import VkClient from './vk-client/vk-client';
 import createMessage from './controllers/send-info-weather';
+import { users } from './constants';
+import openTableWeather from './controllers/parser-weather';
 import weatherClient from './weather-client';
+import { inspect } from 'util';
 
-const vkClient = new VkClient({ accessToken: config.vkApiKey });
+const telegramClient = new TelegramClient({ botToken: config.botTokenTelegram });
 
 exports.handler = async (): Promise<void> => {
   try {
@@ -14,8 +14,8 @@ exports.handler = async (): Promise<void> => {
     for (const user of users.values()) {
       const weatherResult = await weatherClient.getInfoCity(user.city);
       const { message } = createMessage(weatherResult, table);
-      await vkClient.sendMessage(message, [user.userId]);
-      console.log(`Successful sending message to user with id: ${user.userId}`);
+      await telegramClient.sendMessage(message, user.chatId.toString());
+      console.log(`Successful sending message to user with id: ${user.chatId}`);
     }
   } catch (e) {
     console.error(inspect(e));

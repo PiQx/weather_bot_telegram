@@ -10,6 +10,9 @@
     "start": "node dist/src/vk.js"
   },
   "devDependencies": {
+    "@types/faker": "^4.1.10",
+    "@types/node": "^13.9.1",
+    "@types/node-fetch": "^2.5.5",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "eslint": "^6.8.0",
@@ -27,9 +30,6 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@types/faker": "^4.1.10",
-    "@types/node": "^13.9.1",
-    "@types/node-fetch": "^2.5.5",
     "csv-parser": "^2.3.2",
     "faker": "^4.1.0",
     "node-fetch": "^2.6.0"
