@@ -1,9 +1,8 @@
 import { City } from '../constants';
-import { stringify } from 'querystring';
 import { GetWeatherResult } from './get-weather-result';
-import fetch from 'node-fetch';
+import BaseApiClient from '../base-api-client/base-api-client';
 
-const API_URL = 'http://api.weatherstack.com/current';
+const API_URL = 'http://api.weatherstack.com';
 
 interface WeatherClientOptions {
   apiKey: string;
@@ -18,8 +17,9 @@ interface GetInfoParams {
   language?: string;
 }
 
-class WeatherClient implements WeatherClientMethods {
+class WeatherClient extends BaseApiClient implements WeatherClientMethods {
   constructor(options: WeatherClientOptions) {
+    super(API_URL);
     this.apiKey = options.apiKey;
   }
 
@@ -30,13 +30,10 @@ class WeatherClient implements WeatherClientMethods {
   }
 
   private async perform(params: GetInfoParams = { city: City.moscow, language: 'ru' }): Promise<GetWeatherResult> {
-    const { city, language } = params;
-    const param = { query: city, language, access_key: this.apiKey };
-    const url = `${API_URL}?${stringify(param)}`;
+    const { city } = params;
+    const param = { query: city, access_key: this.apiKey };
 
-    const result = await fetch(url);
-
-    return result.json();
+    return this.getPerform('current', param);
   }
 }
 

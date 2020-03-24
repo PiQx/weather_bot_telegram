@@ -1,9 +1,9 @@
-import openTableWeather from './controllers/parser-weather';
+import openTableWeather from './utils/open-table-weather';
 import { users } from './constants';
 import { inspect } from 'util';
 import config from './config';
 import VkClient from './vk-client/vk-client';
-import createMessage from './controllers/send-info-weather';
+import createMessage from './utils/create-message';
 import weatherClient from './weather-client';
 
 const vkClient = new VkClient({ accessToken: config.vkApiKey });

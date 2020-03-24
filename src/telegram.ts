@@ -1,8 +1,8 @@
 import TelegramClient from './telegram-client/telegram-client';
 import config from './config';
-import createMessage from './controllers/send-info-weather';
+import createMessage from './utils/create-message';
 import { users } from './constants';
-import openTableWeather from './controllers/parser-weather';
+import openTableWeather from './utils/open-table-weather';
 import weatherClient from './weather-client';
 import { inspect } from 'util';
 
