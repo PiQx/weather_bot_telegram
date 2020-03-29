@@ -4,6 +4,9 @@ import { inspect } from 'util';
 import createMessage from './utils/create-message';
 import weatherClient from './weather-client';
 import vkClient from './vk-client';
+import delay from './utils/delay';
+
+const TIME_DELAY = 1000 * 2; // 3 секунды
 
 exports.handler = async (): Promise<void> => {
   try {
@@ -13,6 +16,7 @@ exports.handler = async (): Promise<void> => {
       const { message } = createMessage(weatherResult, table);
       await vkClient.sendMessage(message, [user.userId]);
       console.log(`Successful sending message to user with id: ${user.userId}`);
+      await delay(TIME_DELAY);
     }
   } catch (e) {
     console.error(inspect(e));
