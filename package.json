@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint src --ext .ts --cache",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/src/vk.js"
+    "start": "node dist/vk.js",
+    "start:test": "node dist/index.js"
   },
   "devDependencies": {
     "@types/faker": "^4.1.10",
@@ -32,6 +33,7 @@
   "dependencies": {
     "csv-parser": "^2.3.2",
     "faker": "^4.1.0",
+    "http-proxy-agent": "^4.0.1",
     "node-fetch": "^2.6.0"
   },
   "husky": {
