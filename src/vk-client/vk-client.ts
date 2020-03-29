@@ -5,6 +5,7 @@ import VkErrors from './errors';
 
 interface VkClientMethods {
   sendMessage(message: string, userIds: string[]): Promise<SendMessageResult>;
+  sendSticker(stickerId: number, userId: string): Promise<SendMessageResult>;
 }
 
 interface VkClientOptions {
@@ -35,11 +36,11 @@ class VkClient extends BaseApiClient implements VkClientMethods {
     return this.parseResponse(result);
   }
 
-  public async sendSticker(stickerId: number, userIds: string[]): Promise<SendMessageResult> {
+  public async sendSticker(stickerId: number, userId: string): Promise<SendMessageResult> {
     const params = {
       access_token: this.apiKey,
       random_id: faker.random.number(),
-      user_ids: userIds,
+      user_ids: userId,
       v: VERSION_API,
       sticker_id: stickerId,
     };

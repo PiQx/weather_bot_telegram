@@ -1,4 +1,4 @@
-export interface Request {
+export interface RequestParams {
   type: string;
   query: string;
   language: string;
