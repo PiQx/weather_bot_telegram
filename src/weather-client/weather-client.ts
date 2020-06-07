@@ -33,7 +33,7 @@ class WeatherClient extends BaseApiClient implements WeatherClientMethods {
     const { city } = params;
     const param = { query: city, access_key: this.apiKey };
 
-    return this.getPerform('current', param);
+    return this.getPerform<GetWeatherResult>('current', param);
   }
 }
 
