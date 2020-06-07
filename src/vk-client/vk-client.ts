@@ -44,7 +44,7 @@ class VkClient extends BaseApiClient implements VkClientMethods {
       v: VERSION_API,
       sticker_id: stickerId,
     };
-    const result = await this.getPerform('messages.send', params);
+    const result = await this.getPerform<SendMessageResult>('messages.send', params);
 
     return this.parseResponse(result);
   }

@@ -19,6 +19,8 @@ export const users = new Map<string, User>([
   ['andrej', { userId: '85101500', city: City.nsk, chatId: 234 }],
 ]);
 
+export const MESSAGE_KEY = 'Не забудь ключи!!!';
+
 export enum Sticker {
   notGood = 16177,
   good = 16194,

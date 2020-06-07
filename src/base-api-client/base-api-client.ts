@@ -5,16 +5,15 @@ interface RequestParams {
   [key: string]: string | number | string[];
 }
 
-class BaseApiClient {
+abstract class BaseApiClient {
 
-  constructor(uri: string) {
+  protected constructor(uri: string) {
     this.baseUrl = uri;
   }
 
   private readonly baseUrl: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  protected async getPerform(method: string, requestParams: RequestParams): Promise<any> {
+  protected async getPerform<Response>(method: string, requestParams: RequestParams): Promise<Response> {
     const uri = this.buildUri(requestParams);
     const url = `${this.baseUrl}/${method}?${uri}`;
     const result = await fetch(url);

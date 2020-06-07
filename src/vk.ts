@@ -1,5 +1,5 @@
 import openTableWeather from './utils/open-table-weather';
-import { users } from './constants';
+import {MESSAGE_KEY, users} from './constants';
 import { inspect } from 'util';
 import createMessage from './utils/create-message';
 import weatherClient from './weather-client';
@@ -18,6 +18,12 @@ exports.handler = async (): Promise<void> => {
       console.log(`Successful sending message to user with id: ${user.userId}`);
       await delay(TIME_DELAY);
     }
+
+    if (users.get('vikaMSK') !== undefined) {
+      const userId = users.get('vikaMSK')?.userId;
+      await vkClient.sendMessage(MESSAGE_KEY, [userId as string])
+    }
+
   } catch (e) {
     console.error(inspect(e));
   }
